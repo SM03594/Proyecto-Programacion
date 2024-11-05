@@ -3,6 +3,7 @@
 #include "modulos/printMatriz.c"
 #include "modulos/ponerBarco.c"
 #include "modulos/checkDispon.c"
+#include "modulos/posEnRango.c"
 
 #define LONGITUD 10
 #define LONGCELDA 2
@@ -43,7 +44,7 @@ int main(void)
         coords7[3] = {1,0,9}, //b
         coords8[3] = {1,3,3}, //m
         coords9[3] = {0,8,2}, //m
-        coords10[3] = {1,2,0} //b
+        coords10[3] = {1,2,0} //b        
     ;
 
     ponerBarco(matrizJug, coords1, 5);
@@ -78,6 +79,33 @@ int main(void)
     printf("Pos5: %d \n", e);
 
     printf("\n\n");
+
+//---------------------------------------------------------------
+
+    int coords11[3] = {0,0,5}, //b
+        coords12[3] = {1,0,9}, //b
+        coords13[3] = {1,8,3}, //m
+        coords14[3] = {0,8,9}, //m
+        coords15[3] = {1,2,0} //b
+    ;
+
+    int alfa, beta, gamma, delta, epsilon;
+
+    printf("1: ");
+    alfa = posEnRango(coords11, 5, LONGITUD, 1);
+    printf("\n");
+    printf("2: ");
+    beta = posEnRango(coords12, 4, LONGITUD, 1);
+    printf("\n");
+    printf("3: ");
+    gamma = posEnRango(coords13, 3, LONGITUD, 1);
+    printf("\n");
+    printf("4: ");
+    delta = posEnRango(coords14, 2, LONGITUD, 1);
+    printf("\n");
+    printf("5: ");
+    epsilon = posEnRango(coords15, 1, LONGITUD, 1);
+    printf("\n");
 
 }
 
