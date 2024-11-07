@@ -4,6 +4,7 @@
 #include "modulos/ponerBarco.c"
 #include "modulos/checkDispon.c"
 #include "modulos/posEnRango.c"
+#include "modulos/pedirCoords.c"
 
 #define LONGITUD 10
 #define LONGCELDA 2
