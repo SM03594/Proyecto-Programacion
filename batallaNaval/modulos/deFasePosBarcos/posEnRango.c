@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../header.h"
+#include "../../header.h"
 
 int posEnRango(int coordsVec[3], int longBarco, int longitud, int jugador)
 {

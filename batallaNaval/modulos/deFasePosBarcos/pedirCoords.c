@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../header.h"
+#include "../../header.h"
 
 void pedirCoords(int coordsVec[3], int longMatriz)
 {

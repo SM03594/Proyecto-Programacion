@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../header.h"
+#include "../../header.h"
 
 void printMatriz(int matriz[10][10][2])
 {

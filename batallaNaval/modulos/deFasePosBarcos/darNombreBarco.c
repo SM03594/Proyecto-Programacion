@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../header.h"
+#include "../../header.h"
 
 char* darNombreBarco(int longBarco)
 {

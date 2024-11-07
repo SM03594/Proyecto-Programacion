@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../header.h"
+#include "../../header.h"
 
 void ponerBarco(int matriz[10][10][2], int coordsVec[3], int longBarco)
 {
