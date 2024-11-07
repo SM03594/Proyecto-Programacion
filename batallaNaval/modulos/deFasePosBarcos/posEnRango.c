@@ -25,7 +25,7 @@ int posEnRango(int coordsVec[3], int longBarco, int longitud, int jugador)
 
         if(jugador == 1)
         {
-            printf("\nERROR: posicionamiento fuera de rango. \n");
+            printf("ERROR: posicionamiento fuera de rango. \n\n");
         }
     }
 

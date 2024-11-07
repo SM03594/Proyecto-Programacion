@@ -50,5 +50,6 @@ void printMatriz(int matriz[10][10][2])
             printf("\n"); //para romper linea
         }
     }
+    printf("\n");
 }
 
