@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 #include "../../header.h"
 #include "../fasePosBarcos.c"
+#include "../compartido/crearMat.c"
 
-#define LONGITUD 10
-#define LONGCELDA 2
 
 int main(void)
 {   
     srand(time(NULL));
 
-    int numBarcos = 5;
+    int numBarcos = 5, filas = 12, cols = 12;
 
-    int vecBarcos[numBarcos], 
-        matrizJug[LONGITUD][LONGITUD][LONGCELDA] = {0},
-        matrizComp[LONGITUD][LONGITUD][LONGCELDA] = {0}
+    int vecBarcos[numBarcos],
+        ***matrizJug = crearMat(filas, cols) ,
+        ***matrizComp = crearMat(filas, cols)
     ;
 
     for(int i=0; i<numBarcos; i++)
@@ -23,7 +23,7 @@ int main(void)
         vecBarcos[i] = numBarcos - i;
     }
 
-    fasePosBarcos(LONGITUD, numBarcos, vecBarcos, matrizJug, matrizComp);
+    fasePosBarcos(filas, cols, numBarcos, vecBarcos, matrizJug, matrizComp);
 
     return 0;
 }

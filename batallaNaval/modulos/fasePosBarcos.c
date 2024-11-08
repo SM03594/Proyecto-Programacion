@@ -9,7 +9,7 @@
 #include "compartido/numAleatorio.c"
 
 
-void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJug[10][10][2], int matrizComp[10][10][2])
+void fasePosBarcos(int filas, int cols, int numBarcos, int vecBarcos[5], int ***matrizJug, int ***matrizComp)
 {
     int coords[3], validezCoords, enRango, longBarcoActual, disponible;
     char* nombreBarco;
@@ -18,7 +18,7 @@ void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJu
     {
         if(i==0)
         {
-            printMatriz(matrizJug);
+            printMatriz(matrizJug, filas, cols);
         }
 
         longBarcoActual = vecBarcos[i];
@@ -29,10 +29,10 @@ void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJu
         {
             printf("Barco a posicionar: %s, de %d celdas de longitud \n", nombreBarco,  longBarcoActual);
             
-            pedirCoords(coords, longMatriz);
+            pedirCoords(coords, filas, cols);
             printf("\n");
 
-            enRango = posEnRango(coords, longBarcoActual, longMatriz, 1);
+            enRango = posEnRango(coords, longBarcoActual, filas, cols, 1);
 
             if(enRango==1)
             {
@@ -46,7 +46,7 @@ void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJu
             }
         }
 
-        printMatriz(matrizJug);
+        printMatriz(matrizJug, filas, cols);
     }
 
     printf("//-----------------------------------------------------\n");
@@ -56,7 +56,7 @@ void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJu
     {
         if(x==0)
         {
-            printMatriz(matrizComp);
+            printMatriz(matrizComp, filas, cols);
         }
 
         longBarcoActual = vecBarcos[x];
@@ -68,7 +68,7 @@ void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJu
             coords[1] = numAleatorio(0, 9);
             coords[2] = numAleatorio(0, 9);
 
-            enRango = posEnRango(coords, longBarcoActual, longMatriz, 1);
+            enRango = posEnRango(coords, longBarcoActual, filas, cols, 1);
 
             if(enRango==1)
             {
@@ -82,7 +82,7 @@ void fasePosBarcos(int longMatriz, int numBarcos, int vecBarcos[5], int matrizJu
             }
         }
 
-        printMatriz(matrizComp); 
+        printMatriz(matrizComp, filas, cols); 
     }
 }
 

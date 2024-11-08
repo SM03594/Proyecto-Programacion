@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../../header.h"
 
-void pedirCoords(int coordsVec[3], int longMatriz)
+void pedirCoords(int coordsVec[3], int filas, int cols)
 {
     int eje, fila, col, valido;
     float ejeAux, filaAux, colAux;
@@ -37,14 +37,14 @@ void pedirCoords(int coordsVec[3], int longMatriz)
 
     while (valido==0)
     {
-        printf("Ingrese la fila de 0 a %d \n", longMatriz-1);
+        printf("Ingrese la fila de 0 a %d \n", filas-1);
         chAux = scanf("%f", &filaAux);
 
         fila = filaAux;
 
         if((chAux==1)&&(fila==filaAux)) 
         {
-            if((fila>=0)&&(fila<=longMatriz-1))
+            if((fila>=0)&&(fila<=filas-1))
             {
                 valido=1;
                 coordsVec[1]=fila;
@@ -67,14 +67,14 @@ void pedirCoords(int coordsVec[3], int longMatriz)
 
     while (valido==0)
     {
-        printf("Ingrese la columna de 0 a %d \n", longMatriz-1);
+        printf("Ingrese la columna de 0 a %d \n", cols-1);
         chAux = scanf("%f", &colAux);
 
         col = colAux;
 
         if((chAux==1)&&(col==colAux)) 
         {
-            if((col>=0)&&(col<=longMatriz-1))
+            if((col>=0)&&(col<=cols-1))
             {
                 valido=1;
                 coordsVec[2]=col;

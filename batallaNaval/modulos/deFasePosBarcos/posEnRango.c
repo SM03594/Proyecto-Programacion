@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "../../header.h"
 
-int posEnRango(int coordsVec[3], int longBarco, int longitud, int jugador)
+int posEnRango(int coordsVec[3], int longBarco, int filas, int cols, int jugador)
 {
-    int eje, fila, col, valido, puntoPartida;
+    int eje, fila, col, valido, puntoPartida, longitud;
 
     eje = coordsVec[0];
  	fila = coordsVec[1];
@@ -13,10 +13,12 @@ int posEnRango(int coordsVec[3], int longBarco, int longitud, int jugador)
     if(eje==0) //eje==0 es eje de posicionamiento horizontal
     {
         puntoPartida = col;
+        longitud = cols;
     }
     else
     {
         puntoPartida = fila;
+        longitud = filas;
     }
 
     if((puntoPartida + longBarco - 1) >= longitud)

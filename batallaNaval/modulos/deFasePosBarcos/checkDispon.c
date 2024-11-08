@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../../header.h"
 
-int checkDisp(int matriz[10][10][2], int coordsVec[3], int longBarco, int jugador)
+int checkDisp(int ***matriz, int coordsVec[3], int longBarco, int jugador)
 {
     int eje, fila, col, celdaOcupacion, disponible;
 
