@@ -97,8 +97,6 @@ void MovimientoN(char mat[LONG][LONG]) {
     }
 }
 
-
-
 void MovimientoR(char mat[LONG][LONG]) {
     printf("Turno de Rojas\n");
 
@@ -171,7 +169,7 @@ void MovimientoR(char mat[LONG][LONG]) {
                         mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
                         movimientoValido = 1;
                     }
-                    // Lógica de movimiento para reina
+                    // Lógica de movimiento para reina (no debe retroceder)
                     else if (mat[fila][columna] == 'r' && abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
                         mat[fila][columna] = ' ';
                         mat[filaN][columnaN] = 'r';
@@ -186,11 +184,10 @@ void MovimientoR(char mat[LONG][LONG]) {
                         mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
                         movimientoValido = 1;
                     }
-                    // Lógica de movimiento hacia atrás para la reina
+                    // Lógica de movimiento hacia atrás para la reina (NO se permite)
                     else if (mat[fila][columna] == 'r' && abs(deltaX) == 1 && abs(deltaY) == -1 && mat[filaN][columnaN] == ' ') {
-                        mat[fila][columna] = ' ';
-                        mat[filaN][columnaN] = 'r';
-                        movimientoValido = 1;
+                        // No permitir movimiento hacia atrás para reinas
+                        printf("Las reinas no pueden moverse hacia atrás\n");
                     }
                 }
             }
