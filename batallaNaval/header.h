@@ -13,7 +13,7 @@ void fasePosBarcos(int filas, int cols, int numBarcos, int vecBarcos[5], int ***
 //----------------------------------------------------------------------------------
 
 //Funciones In Game:
-//void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno);
+void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno);
 void pedirCoordsAtaque(int coordsAtaque[2], int filas, int cols);
 
 //----------------------------------------------------------------------------------
