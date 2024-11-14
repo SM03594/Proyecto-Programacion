@@ -169,10 +169,10 @@ void MovimientoR(char mat[LONG][LONG]) {
                         mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
                         movimientoValido = 1;
                     }
-                    // Lógica de movimiento para reina (no debe retroceder)
+                    // Lógica de movimiento para reina
                     else if (mat[fila][columna] == 'r' && abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
                         mat[fila][columna] = ' ';
-                        mat[filaN][columnaN] = 'r';
+                        mat[filaN][columnaN] = 'r';  // La reina no debe volver a 'R'
                         movimientoValido = 1;
                     }
                     // Lógica de captura para reina (también puede capturar a reinas negras)
@@ -180,14 +180,15 @@ void MovimientoR(char mat[LONG][LONG]) {
                              (mat[fila + deltaY / 2][columna + deltaX / 2] == 'n' || mat[fila + deltaY / 2][columna + deltaX / 2] == 'N') && mat[filaN][columnaN] == ' ') {
                         // Realizar la captura
                         mat[fila][columna] = ' ';
-                        mat[filaN][columnaN] = 'r';
+                        mat[filaN][columnaN] = 'r';  // La reina no debe volver a 'R'
                         mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
                         movimientoValido = 1;
                     }
-                    // Lógica de movimiento hacia atrás para la reina (NO se permite)
+                    // Lógica de movimiento hacia atrás para la reina
                     else if (mat[fila][columna] == 'r' && abs(deltaX) == 1 && abs(deltaY) == -1 && mat[filaN][columnaN] == ' ') {
-                        // No permitir movimiento hacia atrás para reinas
-                        printf("Las reinas no pueden moverse hacia atrás\n");
+                        mat[fila][columna] = ' ';
+                        mat[filaN][columnaN] = 'r';  // La reina sigue siendo 'r' al moverse hacia atrás
+                        movimientoValido = 1;
                     }
                 }
             }
