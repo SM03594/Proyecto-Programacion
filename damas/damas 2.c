@@ -32,8 +32,8 @@ void CrearMatriz() {
 
 //-------------------------------------------------------------------------------------------------------------------
 void MostrarMatriz(char mat[LONG][LONG]) {
-    printf("   1  2  3  4  5  6  7  8\n");
-    printf("   -  -  -  -  -  -  -  -\n");
+    printf("    1  2  3  4  5  6  7  8\n");
+    printf("    -  -  -  -  -  -  -  -\n");
     for (int i = 0; i < LONG; i++) {
         printf("%d |", i + 1);
         for (int j = 0; j < LONG; j++) {
@@ -41,8 +41,8 @@ void MostrarMatriz(char mat[LONG][LONG]) {
         }
         printf("| %d\n", i + 1);
     }
-    printf("   -  -  -  -  -  -  -  -\n");
-    printf("   1  2  3  4  5  6  7  8\n");
+    printf("    -  -  -  -  -  -  -  -\n");
+    printf("    1  2  3  4  5  6  7  8\n");
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ void rellenarMatriz(char mat[LONG][LONG]) {
         finJuego = VerificarFinJuego(mat, finJuego, turnoColor);
         if (finJuego == 0) {
             MovimientoR(mat);  // Mueve las piezas rojas
-            MostrarMatriz(mat); // Muestra el tablero despuÈs del movimiento
+            MostrarMatriz(mat); // Muestra el tablero despu√©s del movimiento
         }
 
         finJuego = VerificarFinJuego(mat, finJuego, turnoColor);
@@ -79,7 +79,7 @@ void rellenarMatriz(char mat[LONG][LONG]) {
 
         if (finJuego == 0) {
             MovimientoN(mat);  // Mueve las piezas negras
-            MostrarMatriz(mat); // Muestra el tablero despuÈs del movimiento
+            MostrarMatriz(mat); // Muestra el tablero despu√©s del movimiento
             finJuego = VerificarFinJuego(mat, finJuego, turnoColor);
             turnoColor = 1;  // Cambiar turno a rojas
         }
@@ -89,26 +89,28 @@ void rellenarMatriz(char mat[LONG][LONG]) {
 //-------------------------------------------------------------------------------------------------------------------
 int VerificarFinJuego(char mat[LONG][LONG], int finJuego, int turnoColor) {
     int i, j;
-    int tienePiezas = 0;
+    int contarRojas, contarNegras;
     int tieneMovimientos = 0;
+    contarRojas=0;
+    contarNegras=0;
 
-    // Comprobar si el jugador tiene piezas
-    for (i = 0; i < LONG; i++) {
-        for (j = 0; j < LONG; j++) {
-            if (turnoColor == 1 && (mat[i][j] == 'N' || mat[i][j] == 'n')) { // Piezas negras
-                tienePiezas = 1;
-            } else if (turnoColor == 2 && (mat[i][j] == 'R' || mat[i][j] == 'r')) { // Piezas rojas
-                tienePiezas = 1;
-            }
+for (i=0;i<= 7;i++){
+    for (j=0; j<=7; j++){
+        if (mat[i][j]=='R' || mat[i][j]=='r'){
+            contarRojas++;
+        }
+
+		if (mat[i][j]=='N' || mat[i][j]=='n'){
+            contarNegras++;
         }
     }
+}
 
-    // Si no tiene piezas, el oponente gana
-    if (!tienePiezas) {
-        finJuego = 1;
-        printf("Jugador %d ha ganado, no tiene m·s piezas.\n", (turnoColor == 1) ? 2 : 1);
-        return finJuego;
-    }
+if(contarRojas == 0)
+	{finJuego = 2;}
+else if (contarNegras == 0)
+	{finJuego = 1;}
+
 
     // Comprobar si el jugador tiene movimientos disponibles
     for (i = 0; i < LONG; i++) {
@@ -137,7 +139,7 @@ int VerificarFinJuego(char mat[LONG][LONG], int finJuego, int turnoColor) {
     return finJuego;
 }
 
-// FunciÛn para verificar si una pieza puede moverse
+// Funci√≥n para verificar si una pieza puede moverse
 int PuedeMover(char mat[LONG][LONG], int fila, int columna, int turnoColor) {
     int i, j;
     int direcciones[4][2] = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}}; // Direcciones diagonales
@@ -149,12 +151,12 @@ int PuedeMover(char mat[LONG][LONG], int fila, int columna, int turnoColor) {
 
         if (nuevaFila >= 0 && nuevaFila < LONG && nuevaColumna >= 0 && nuevaColumna < LONG) {
             if (mat[nuevaFila][nuevaColumna] == ' ') {
-                return 1;  // Movimiento v·lido
+                return 1;  // Movimiento v√°lido
             }
         }
     }
 
-    return 0;  // No hay movimiento v·lido
+    return 0;  // No hay movimiento v√°lido
 }
 //-------------------------------------------------------------------------------------------------------------------
 void MovimientoR(char mat[LONG][LONG]) {
@@ -168,64 +170,99 @@ void MovimientoR(char mat[LONG][LONG]) {
 
     if (vectorCaptura[0] == 1) {
         // Si hay una pieza a capturar, forzar a capturarla
-        fila = vectorCaptura[1] - 1;  // Ajustamos a Ìndices de 0
+        fila = vectorCaptura[1] - 1;  // Ajustamos a √≠ndices de 0
         columna = vectorCaptura[2] - 1;
         printf("Pieza Roja (%d, %d) esta obligada a comer\n", fila + 1, columna + 1);  // Se imprime en formato 1-based
 
         do {
-            printf("øDonde desea mover la pieza? (primero fila, luego columna):\n ");
+            printf("Donde desea mover la pieza? (primero fila, luego columna):\n");
             scanf("%d %d", &filaN, &columnaN);
-            filaN--; columnaN--;  // Ajustamos a Ìndices de 0
+            filaN--; columnaN--;  // Ajustamos a √≠ndices de 0
             deltaX = columnaN - columna;
             deltaY = filaN - fila;
 
         } while (filaN < 0 || filaN >= LONG || columnaN < 0 || columnaN >= LONG ||
                  abs(deltaX) != 2 || abs(deltaY) != 2 || mat[filaN][columnaN] != ' ' ||
-                 mat[fila + deltaY / 2][columna + deltaX / 2] != 'N'); // Captura: la pieza enemiga debe estar en el medio
+                 (mat[fila + deltaY / 2][columna + deltaX / 2] != 'n' && mat[fila + deltaY / 2][columna + deltaX / 2] != 'N')); // Captura: la pieza enemiga debe estar en el medio
 
         // Realizar la captura
         capturarXP = columna + deltaX / 2;
         capturarY = fila + deltaY / 2;
-        if (mat[capturarY][capturarXP] == 'N') {
-            mat[capturarY][capturarXP] = ' ';
+        if (mat[capturarY][capturarXP] == 'n' || mat[capturarY][capturarXP] == 'N') { // Captura de piezas negras o reinas negras
+            mat[capturarY][capturarXP] = ' ';  // Eliminar la pieza capturada
+            if (mat[fila][columna] == 'R'){
             mat[fila][columna] = ' ';
             mat[filaN][columnaN] = 'R';
+            }
+            else if (mat[fila][columna] == 'r'){
+            mat[fila][columna] = ' ';
+            mat[filaN][columnaN] = 'r';
+            }
+
         }
     } else {
         do {
-            printf("Ingrese las coordenadas de la pieza que desea mover (primero fila, luego columna):\n ");
-            scanf("%d %d", &fila, &columna);
-            fila--; columna--;  // Ajuste a Ìndices 0
+            printf("Ingrese las coordenadas de la pieza que desea mover (primero fila, luego columna):\n");
+            scanf("%d%d", &fila, &columna);
+            fila--; columna--;  // Ajuste a √≠ndices de 0
 
-            if (mat[fila][columna] != 'R') {
-                printf("La casilla seleccionada no contiene una pieza Roja v·lida.\n");
+            if (mat[fila][columna] != 'R' && mat[fila][columna] != 'r') {
+                printf("La casilla seleccionada no contiene una pieza Roja valida.\n");
             } else {
+                // Si la pieza llega a la √∫ltima fila, se convierte en reina
+                if (fila == LONG - 1 && mat[fila][columna] == 'R') {
+                    mat[fila][columna] = 'r';  // Convertimos a reina
+                    printf("¬°La pieza Roja se ha convertido en Reina!\n");
+                }
+
                 // Verificar si la pieza puede moverse
                 if (PuedeMover(mat, fila, columna, 2)) {
-                    printf("øDonde desea mover la pieza? (primero fila, luego columna):\n ");
+                    printf("Donde desea mover la pieza? (primero fila, luego columna):\n");
                     scanf("%d %d", &filaN, &columnaN);
-                    filaN--; columnaN--;  // Ajuste a Ìndices 0
+                    filaN--; columnaN--;  // Ajuste a √≠ndices de 0
                     deltaX = columnaN - columna;
                     deltaY = filaN - fila;
 
-                    if (abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
+                    // L√≥gica de movimiento para pieza normal
+                    if (mat[fila][columna] == 'R' && abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
                         mat[fila][columna] = ' ';
                         mat[filaN][columnaN] = 'R';
                         movimientoValido = 1;
-                    } else if (abs(deltaX) == 2 && abs(deltaY) == 2 &&
-                               mat[fila + deltaY / 2][columna + deltaX / 2] == 'N' && mat[filaN][columnaN] == ' ') {
+                    }
+                    // L√≥gica de movimiento para pieza normal que realiza una captura
+                    else if (mat[fila][columna] == 'R' && abs(deltaX) == 2 && abs(deltaY) == 2 &&
+                             (mat[fila + deltaY / 2][columna + deltaX / 2] == 'n' || mat[fila + deltaY / 2][columna + deltaX / 2] == 'N') && mat[filaN][columnaN] == ' ') {
                         // Realizar la captura
                         mat[fila][columna] = ' ';
                         mat[filaN][columnaN] = 'R';
-                        mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';
+                        mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
                         movimientoValido = 1;
+                    }
+                    // L√≥gica de movimiento para reina (no debe retroceder)
+                    else if (mat[fila][columna] == 'r' && abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
+                        mat[fila][columna] = ' ';
+                        mat[filaN][columnaN] = 'r';
+                        movimientoValido = 1;
+                    }
+                    // L√≥gica de captura para reina (tambi√©n puede capturar a reinas negras)
+                    else if (mat[fila][columna] == 'r' && abs(deltaX) == 2 && abs(deltaY) == 2 &&
+                             (mat[fila + deltaY / 2][columna + deltaX / 2] == 'n' || mat[fila + deltaY / 2][columna + deltaX / 2] == 'N') && mat[filaN][columnaN] == ' ') {
+                        // Realizar la captura
+                        mat[fila][columna] = ' ';
+                        mat[filaN][columnaN] = 'r';
+                        mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
+                        movimientoValido = 1;
+                    }
+                    // L√≥gica de movimiento hacia atr√°s para la reina (NO se permite)
+                    else if (mat[fila][columna] == 'r' && abs(deltaX) == 1 && abs(deltaY) == -1 && mat[filaN][columnaN] == ' ') {
+                        // No permitir movimiento hacia atr√°s para reinas
+                        printf("Las reinas no pueden moverse hacia atras\n");
                     }
                 }
             }
-        } while (!movimientoValido);  // Repetir hasta que el movimiento sea v·lido
+        } while (!movimientoValido);  // Repetir hasta que el movimiento sea v√°lido
     }
 }
-
 //-------------------------------------------------------------------------------------------------------------------
 void MovimientoN(char mat[LONG][LONG]) {
     printf("Turno de Negras\n");
@@ -238,61 +275,99 @@ void MovimientoN(char mat[LONG][LONG]) {
 
     if (vectorCaptura[0] == 1) {
         // Si hay una pieza a capturar, forzar a capturarla
-        fila = vectorCaptura[1] - 1;  // Ajustamos a Ìndices de 0
+        fila = vectorCaptura[1] - 1;  // Ajustamos a √≠ndices de 0
         columna = vectorCaptura[2] - 1;
         printf("Pieza Negra (%d, %d) esta obligada a comer\n", fila + 1, columna + 1);  // Se imprime en formato 1-based
 
         do {
-            printf("øDonde desea mover la pieza? (primero fila, luego columna):\n ");
+            printf("Donde desea mover la pieza? (primero fila, luego columna):\n");
             scanf("%d %d", &filaN, &columnaN);
-            filaN--; columnaN--;  // Ajustamos a Ìndices de 0
+            filaN--; columnaN--;  // Ajustamos a √≠ndices de 0
             deltaX = columnaN - columna;
             deltaY = filaN - fila;
 
         } while (filaN < 0 || filaN >= LONG || columnaN < 0 || columnaN >= LONG ||
                  abs(deltaX) != 2 || abs(deltaY) != 2 || mat[filaN][columnaN] != ' ' ||
-                 mat[fila + deltaY / 2][columna + deltaX / 2] != 'R'); // Captura: la pieza enemiga debe estar en el medio
+                 (mat[fila + deltaY / 2][columna + deltaX / 2] != 'R' && mat[fila + deltaY / 2][columna + deltaX / 2] != 'r')); // Permitir capturar a piezas rojas o reinas rojas
 
         // Realizar la captura
         capturarXP = columna + deltaX / 2;
         capturarY = fila + deltaY / 2;
-        if (mat[capturarY][capturarXP] == 'R') {
-            mat[capturarY][capturarXP] = ' ';
-            mat[fila][columna] = ' ';
-            mat[filaN][columnaN] = 'N';
+if (mat[capturarY][capturarXP] == 'r' || mat[capturarY][capturarXP] == 'R') {
+            mat[capturarY][capturarXP] = ' ';  // Eliminar la pieza capturada
+            if (mat[fila][columna] == 'N')
+            {
+                mat[fila][columna] = ' ';
+                mat[filaN][columnaN] = 'N';
+            }
+            else if (mat[fila][columna] == 'n')
+            {
+                mat[fila][columna] = ' ';
+                mat[filaN][columnaN] = 'n';
+            }    // Colocar la pieza negra en la nueva posici√≥n
         }
     } else {
         do {
-            printf("Ingrese las coordenadas de la pieza que desea mover (primero fila, luego columna):\n ");
-            scanf("%d %d", &fila, &columna);
-            fila--; columna--;  // Ajuste a Ìndices 0
+            printf("Ingrese las coordenadas de la pieza que desea mover (primero fila, luego columna):\n");
+            scanf("%d%d", &fila, &columna);
+            fila--; columna--;  // Ajuste a √≠ndices de 0
 
-            if (mat[fila][columna] != 'N') {
-                printf("La casilla seleccionada no contiene una pieza Negra v·lida.\n");
+            if (mat[fila][columna] != 'N' && mat[fila][columna] != 'n') {
+                printf("La casilla seleccionada no contiene una pieza Negra v√°lida.\n");
             } else {
+                // Si la pieza llega a la primera fila (la del lado opuesto), se convierte en reina
+                if (fila == 0 && mat[fila][columna] == 'N') {
+                    mat[fila][columna] = 'n';  // Convertimos a reina
+                    printf("¬°La pieza Negra se ha convertido en Reina!\n");
+                }
+
                 // Verificar si la pieza puede moverse
                 if (PuedeMover(mat, fila, columna, 1)) {
-                    printf("øDonde desea mover la pieza? (primero fila, luego columna):\n ");
+                    printf("Donde desea mover la pieza? (primero fila, luego columna):\n");
                     scanf("%d %d", &filaN, &columnaN);
-                    filaN--; columnaN--;  // Ajuste a Ìndices de 0
+                    filaN--; columnaN--;  // Ajuste a √≠ndices de 0
                     deltaX = columnaN - columna;
                     deltaY = filaN - fila;
 
-                    if (abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
+                    // L√≥gica de movimiento para pieza normal
+                    if (mat[fila][columna] == 'N' && abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
                         mat[fila][columna] = ' ';
                         mat[filaN][columnaN] = 'N';
                         movimientoValido = 1;
-                    } else if (abs(deltaX) == 2 && abs(deltaY) == 2 &&
-                               mat[fila + deltaY / 2][columna + deltaX / 2] == 'R' && mat[filaN][columnaN] == ' ') {
+                    }
+                    // L√≥gica de movimiento para pieza normal que realiza una captura
+                    else if (mat[fila][columna] == 'N' && abs(deltaX) == 2 && abs(deltaY) == 2 &&
+                             (mat[fila + deltaY / 2][columna + deltaX / 2] == 'R' || mat[fila + deltaY / 2][columna + deltaX / 2] == 'r') && mat[filaN][columnaN] == ' ') {
                         // Realizar la captura
                         mat[fila][columna] = ' ';
                         mat[filaN][columnaN] = 'N';
-                        mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';
+                        mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
+                        movimientoValido = 1;
+                    }
+                    // L√≥gica de movimiento para reina
+                    else if (mat[fila][columna] == 'n' && abs(deltaX) == 1 && abs(deltaY) == 1 && mat[filaN][columnaN] == ' ') {
+                        mat[fila][columna] = ' ';
+                        mat[filaN][columnaN] = 'n';
+                        movimientoValido = 1;
+                    }
+                    // L√≥gica de captura para reina (tambi√©n puede capturar a reinas rojas)
+                    else if (mat[fila][columna] == 'n' && abs(deltaX) == 2 && abs(deltaY) == 2 &&
+                             (mat[fila + deltaY / 2][columna + deltaX / 2] == 'R' || mat[fila + deltaY / 2][columna + deltaX / 2] == 'r') && mat[filaN][columnaN] == ' ') {
+                        // Realizar la captura
+                        mat[fila][columna] = ' ';
+                        mat[filaN][columnaN] = 'n';
+                        mat[fila + deltaY / 2][columna + deltaX / 2] = ' ';  // Eliminar la pieza capturada
+                        movimientoValido = 1;
+                    }
+                    // L√≥gica de movimiento hacia atr√°s para la reina
+                    else if (mat[fila][columna] == 'n' && abs(deltaX) == 1 && abs(deltaY) == -1 && mat[filaN][columnaN] == ' ') {
+                        mat[fila][columna] = ' ';
+                        mat[filaN][columnaN] = 'n';
                         movimientoValido = 1;
                     }
                 }
             }
-        } while (!movimientoValido);  // Repetir hasta que el movimiento sea v·lido
+        } while (!movimientoValido);  // Repetir hasta que el movimiento sea v√°lido
     }
 }
 //-------------------------------------------------------------------------------------------------------------------
@@ -395,7 +470,7 @@ void VerificarCapturaNegras(char mat[LONG][LONG], int vectorCaptura[3]) {
                     mat[fila + 2][columna - 2] == ' ') {
                     printf("La pieza Negra puede capturar a la Roja\n");
                     vectorAux[0] = 1;
-                    vectorAux[1] = fila + 1;  // Guardamos la posiciÛn de la pieza que captura (en formato 1-indexed)
+                    vectorAux[1] = fila + 1;  // Guardamos la posici√≥n de la pieza que captura (en formato 1-indexed)
                     vectorAux[2] = columna + 1;
                     capturaPosible = 1;
                     break;
