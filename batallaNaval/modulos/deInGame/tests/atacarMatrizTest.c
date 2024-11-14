@@ -9,9 +9,6 @@
 #include "../atacarMatriz.c"
 #include "../../fasePosBarcos.c"
 
-#define FILAS 10
-#define COLS 10
-
 int main(void) {
     
     srand(time(NULL));
@@ -38,36 +35,58 @@ int main(void) {
     puntosComp=0;
     ronda = 0;
 
-    while ((puntosJug < puntosVic) || (puntosComp < puntosVic))
+    while ((puntosJug < puntosVic) && (puntosComp < puntosVic))
     {
         printf("---------------------------------------------------------\n");
         printf("---------------------------------------------------------\n");
 
         printf("ronda: %d \n\n", ronda);
 
-        printMatriz(matrizJug, FILAS, COLS);
+        printMatriz(matrizJug, filas, cols);
 
         printf("\n\n");
 
-        printMatriz(matrizComp, FILAS, COLS);
+        printMatriz(matrizComp, filas, cols);
 
         printf("\n\n");
 
         if(turno==0)
         {
-            atacarMatriz(matrizComp, FILAS, COLS, &puntosJug, turno);
+            atacarMatriz(matrizComp, filas, cols, &puntosJug, turno);
             turno = 1;
         }
         else
         {
-            atacarMatriz(matrizJug, FILAS, COLS, &puntosComp, turno);
+            atacarMatriz(matrizJug, filas, cols, &puntosComp, turno);
             turno = 0;
         }
 
         ronda+=1;
     }   
-    
 
+    printf("\n\n");
+
+    printf("ronda: %d \n", ronda);
+    printf("puntosJug: %d \n", puntosJug);
+    printf("puntosComp: %d \n\n", puntosComp);
+
+    printMatriz(matrizJug, FILAS, COLS);
+
+    printf("\n\n");
+
+    printMatriz(matrizComp, FILAS, COLS);
+
+    printf("\n\n");
+    
+    if(puntosJug == puntosVic)
+    {
+        printf("\n\n VICTORIA ");
+    }
+    else
+    {
+        printf("\n\n DERROTA ");
+    }
+    
     return 0;
 }
 
