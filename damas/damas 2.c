@@ -212,7 +212,7 @@ void MovimientoR(char mat[LONG][LONG]) {
                 // Si la pieza llega a la última fila, se convierte en reina
                 if (fila == LONG - 1 && mat[fila][columna] == 'R') {
                     mat[fila][columna] = 'r';  // Convertimos a reina
-                    printf("¡La pieza Roja se ha convertido en Reina!\n");
+                    printf("La pieza Roja se ha convertido en Reina!\n");
                 }
 
                 // Verificar si la pieza puede moverse
@@ -318,7 +318,7 @@ if (mat[capturarY][capturarXP] == 'r' || mat[capturarY][capturarXP] == 'R') {
                 // Si la pieza llega a la primera fila (la del lado opuesto), se convierte en reina
                 if (fila == 0 && mat[fila][columna] == 'N') {
                     mat[fila][columna] = 'n';  // Convertimos a reina
-                    printf("¡La pieza Negra se ha convertido en Reina!\n");
+                    printf("La pieza Negra se ha convertido en Reina!\n");
                 }
 
                 // Verificar si la pieza puede moverse
