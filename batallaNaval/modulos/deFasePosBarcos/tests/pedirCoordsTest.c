@@ -10,7 +10,7 @@ int main(void)
 
     for(int i=0; i<reps; i++)
     {
-        pedirCoords(coordsVec, longitud);
+        pedirCoords(coordsVec, longitud, longitud);
         printf("\nTest %d eje:%d fila:%d col:%d\n\n", i+1, coordsVec[0], coordsVec[1], coordsVec[2]);   
     }
     
