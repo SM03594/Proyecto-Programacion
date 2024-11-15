@@ -8,11 +8,11 @@ int main(void) {
     
     srand(time(NULL));
 
-    int numBarcos = 5, filas = 12, cols = 12;
+    int numBarcos = 5, filas = 12, cols = 12, celdas = 2;
 
     int vecBarcos[numBarcos],
-        ***matrizJug = crearMat(filas, cols) ,
-        ***matrizComp = crearMat(filas, cols)
+        ***matrizJug = crearMat3D(filas, cols, celdas),
+        ***matrizComp = crearMat3D(filas, cols, celdas)
     ;
 
     for(int i=0; i<numBarcos; i++)

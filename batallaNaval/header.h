@@ -3,10 +3,10 @@
 
 //Funciones Compartidas: 
 int numAleatorio(int min, int max);
-int*** crearMat(int filas, int cols);
+int*** crearMat3D(int filas, int cols, int celdas);
 
 #include "modulos/compartido/numAleatorio.c"
-#include "modulos/compartido/crearMat.c"
+#include "modulos/compartido/crearMat3D.c"
 
 //----------------------------------------------------------------------------------
 
@@ -32,9 +32,11 @@ void fasePosBarcos(int filas, int cols, int numBarcos, int vecBarcos[5], int ***
 //Funciones In Game:
 void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno);
 void pedirCoordsAtaque(int coordsAtaque[2], int filas, int cols);
+void marcarPosBlancos(int ***matriz ,int ***vecPosBlancos, int fila, int col, int *cantPosBlancos, int puntaje, int filas, int cols);
 
 #include "modulos/deInGame/atacarMatriz.c"
 #include "modulos/deInGame/pedirCoordsAtaque.c"
+#include "modulos/deInGame/marcarPosBlancos.c"
 
 
 

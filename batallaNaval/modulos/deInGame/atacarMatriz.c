@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include "../../header.h"
-//#include "pedirCoordsAtaque.c"
 
-
-void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno)
+void atacarMatriz(int ***matriz, int filas, int cols, int *puntaje, int turno)
 {
     int fila, col, coordsAtaque[2], posPrevAtacada, celdaAtaqueStatus, hayBarco;
 
@@ -26,15 +24,15 @@ void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno)
             col = numAleatorio(0, cols-1);
         }
 
-        celdaAtaqueStatus = matiz[fila][col][1];
+        celdaAtaqueStatus = matriz[fila][col][1];
 
         if(celdaAtaqueStatus==0)
         {
             posPrevAtacada = 0;
 
-            matiz[fila][col][1] = 1; //marcar atque en matriz
+            matriz[fila][col][1] = 1; //marcar atque en matriz
 
-            hayBarco = matiz[fila][col][0]; // sera 1 si hay barco y 0 si no lo hay
+            hayBarco = matriz[fila][col][0]; // sera 1 si hay barco y 0 si no lo hay
 
             if(hayBarco==1)
             {
