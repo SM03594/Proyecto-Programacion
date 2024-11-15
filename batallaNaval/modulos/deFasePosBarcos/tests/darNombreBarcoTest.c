@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../darNombreBarco.c"
+#include "../../../header.h"
 
 int main(void)
 {

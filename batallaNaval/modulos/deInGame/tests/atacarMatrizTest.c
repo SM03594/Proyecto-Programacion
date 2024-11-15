@@ -2,12 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-//#include "testHead.h"
 #include "../../../header.h"
-//#include "../../deFasePosBarcos/printMatriz.c"
-#include "../../compartido/crearMat.c"
-#include "../atacarMatriz.c"
-#include "../../fasePosBarcos.c"
 
 int main(void) {
     

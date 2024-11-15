@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include "../../../header.h"
 
-#include "../pedirCoordsAtaque.c"
+#include "../../../header.h"
 
 int main(void)
 {

@@ -1,12 +1,5 @@
 #include <stdio.h>
 #include "../header.h"
-#include "deFasePosBarcos/darNombreBarco.c"
-#include "deFasePosBarcos/posEnRango.c"
-#include "deFasePosBarcos/pedirCoords.c"
-#include "deFasePosBarcos/checkDispon.c"
-#include "deFasePosBarcos/ponerBarco.c"
-#include "deFasePosBarcos/printMatriz.c"
-#include "compartido/numAleatorio.c"
 
 
 void fasePosBarcos(int filas, int cols, int numBarcos, int vecBarcos[5], int ***matrizJug, int ***matrizComp)

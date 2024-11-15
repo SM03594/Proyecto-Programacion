@@ -3,9 +3,6 @@
 #include <stdlib.h>
 
 #include "../../header.h"
-#include "../fasePosBarcos.c"
-#include "../compartido/crearMat.c"
-
 
 int main(void)
 {   
@@ -27,5 +24,4 @@ int main(void)
 
     return 0;
 }
-
 

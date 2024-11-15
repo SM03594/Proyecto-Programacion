@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "../pedirCoords.c"
+//#include "../pedirCoords.c"
+#include "../../../header.h"
 
 int main(void)
 {
