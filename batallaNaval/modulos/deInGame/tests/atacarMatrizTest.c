@@ -70,11 +70,11 @@ int main(void) {
     printf("puntosJug: %d \n", puntosJug);
     printf("puntosComp: %d \n\n", puntosComp);
 
-    printMatriz(matrizJug, FILAS, COLS);
+    printMatriz(matrizJug, filas, cols);
 
     printf("\n\n");
 
-    printMatriz(matrizComp, FILAS, COLS);
+    printMatriz(matrizComp, filas, cols);
 
     printf("\n\n");
     

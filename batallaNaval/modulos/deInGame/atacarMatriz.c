@@ -82,7 +82,7 @@ void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno)
 
             if(hayBarco==1)
             {
-                puntaje+=1;
+                (*puntaje)+=1;
             }
 
             printf("\n");
