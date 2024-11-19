@@ -29,18 +29,29 @@ void fasePosBarcos(int filas, int cols, int numBarcos, int vecBarcos[5], int ***
 
 //----------------------------------------------------------------------------------
 
+//structs:
+struct memoriaComp
+{
+    int compRacha;
+    int cantPosBlancos;
+    int ***vecPosBlancos;
+    int ultDirTomada[2];
+    int coordsUltAcierto[3]; 
+    int coordsPrimerAciertoRacha[3];
+};
+
 //Funciones In Game:
 void atacarMatriz(int ***matiz, int filas, int cols, int *puntaje, int turno);
 void pedirCoordsAtaque(int coordsAtaque[2], int filas, int cols);
 void marcarPosBlancos(int ***matriz ,int ***vecPosBlancos, int fila, int col, int *cantPosBlancos, int puntaje, int filas, int cols);
-//void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, int *compRacha, int *cantPosBlancos, int ***vecPosBlancos, int *ultDirTomada, int coordsUltAcierto[2], int coordsPrimerAciertoRacha[2]);
+void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoriaComp *memoria, int marca);
 void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols);
 
 
 #include "modulos/deInGame/atacarMatriz.c"
 #include "modulos/deInGame/pedirCoordsAtaque.c"
 #include "modulos/deInGame/marcarPosBlancos.c"
-//#include "modulos/deInGame/ataqueComp.c"
+#include "modulos/deInGame/ataqueComp.c"
 #include "modulos/deInGame/printMesa.c"
 
 
