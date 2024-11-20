@@ -17,7 +17,7 @@ void apuntarEnRacha1(int *fila, int *col, int *direc, int puntaje, int cantPosBl
     *direc = vecPosBlancos[indPuntaje][random][2];
 }
 
-void apuntarEnRachaMayorA1(int *fila, int *col, int *direc, int puntaje, int *cantPosBlancos, int ***vecPosBlancos, int *ultDirTomada, int *ataqueValido)
+void apuntarEnRachaMayorA1(int *fila, int *col, int *direc, int puntaje, int *cantPosBlancos, int ***vecPosBlancos, int ultDirTomada, int *ataqueValido)
 {
     int indPuntaje = puntaje-1;
     int direcAux;
@@ -28,9 +28,9 @@ void apuntarEnRachaMayorA1(int *fila, int *col, int *direc, int puntaje, int *ca
     {
         direcAux = vecPosBlancos[indPuntaje][i][2];
 
-        printf(" i: %d, direcAux: %d, ultDirTomada[0]: %d, indPuntaje: %d, vecPosBlancos: %d, cantPosBlancos: %d \n\n", i, direcAux, ultDirTomada[0], indPuntaje, vecPosBlancos[indPuntaje][i][2], *cantPosBlancos);
+        printf(" i: %d, direcAux: %d, ultDirTomada: %d, indPuntaje: %d, vecPosBlancos: %d, cantPosBlancos: %d \n\n", i, direcAux, ultDirTomada, indPuntaje, vecPosBlancos[indPuntaje][i][2], *cantPosBlancos);
 
-        if(direcAux == ultDirTomada[0])
+        if(direcAux == ultDirTomada)
         {
             *fila = vecPosBlancos[indPuntaje][i][0];
             *col = vecPosBlancos[indPuntaje][i][1];
@@ -48,7 +48,7 @@ void apuntarEnRachaMayorA1(int *fila, int *col, int *direc, int puntaje, int *ca
 
 void apuntarEnRachaNegativa(int *fila, int *col, int *ataqueValido, int *direc, int filas, int cols, int ***matriz, int puntaje, int *cantPosBlancos, int ***vecPosBlancos, int *coordsUltAcierto)
 {
-    int cont, filaAux, colAux, direcAux, celdaPrevAtacada, indPuntaje, random;
+    int cont, filaAux, colAux, direcAux, celdaPrevAtacada, indPuntaje, random, flag;
 
     indPuntaje = puntaje-1;
 
@@ -65,7 +65,6 @@ void apuntarEnRachaNegativa(int *fila, int *col, int *ataqueValido, int *direc, 
 
     for(int i=0; i<*cantPosBlancos; i++)
     {
-        //filaAux = vecPosBlancos[indicePuntaje, i, 0];
         filaAux = vecPosBlancos[indPuntaje][i][0];
         colAux = vecPosBlancos[indPuntaje][i][1];
 
@@ -97,22 +96,22 @@ void apuntarEnRachaNegativa(int *fila, int *col, int *ataqueValido, int *direc, 
 
 void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoriaComp *memoria, int marca)
 {
-    int fila, col, direc, wololo;
+    int fila, col, filaAux, colAux, direc, direcAux, direcOpuesta;
 
-    int ataqueValido, celdaPrevAtacada, hayBarco, vueltaAlPrimerAciertoRacha; //flags
+    int ataqueValido, celdaPrevAtacada, hayBarco, vueltaAlPrimerAciertoRacha, vueltaHecha; //flags
 
     int *compRachaPtr = &(memoria->compRacha),
         *coordsUltAciertoPtr = memoria->coordsUltAcierto,
         *coordsPrimerAciertoRachaPtr = memoria->coordsPrimerAciertoRacha,
         ***vecPosBlancosPtr = memoria->vecPosBlancos,
-        *canPosBlancosPtr = &(memoria->cantPosBlancos), /////////////
+        *canPosBlancosPtr = &(memoria->cantPosBlancos), 
         *ultDirTomadaPtr = memoria->ultDirTomada
-
     ;
 
     printf("\n\n compRachaPtr: %d \n\n", *compRachaPtr);
 
     ataqueValido = 0;
+    vueltaHecha = 0;
 
     while (ataqueValido == 0)
     {
@@ -130,6 +129,15 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
             break;
 
         case 1:
+
+            if(vueltaAlPrimerAciertoRacha == 1)
+            {
+                filaAux = coordsPrimerAciertoRachaPtr[0];
+                colAux = coordsPrimerAciertoRachaPtr[1];
+
+                marcarPosBlancos(matriz, vecPosBlancosPtr, filaAux, colAux, canPosBlancosPtr, (*puntaje), filas, cols);
+            }
+
             if(*canPosBlancosPtr > 0)
             {
                 celdaPrevAtacada = 1;
@@ -153,23 +161,66 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
 
             if(*compRachaPtr > 1)
             {
-                ataqueValido = 0;
+                if(vueltaAlPrimerAciertoRacha == 1)
+                {
+                    filaAux = coordsPrimerAciertoRachaPtr[0];
+                    colAux = coordsPrimerAciertoRachaPtr[1];
+                    direcAux = ultDirTomadaPtr[0];
 
-                apuntarEnRachaMayorA1(&fila, &col, &direc, *puntaje, canPosBlancosPtr, vecPosBlancosPtr, ultDirTomadaPtr, &ataqueValido);
+                    switch (direcAux)
+                    {
+                    case 1:
+                        direcOpuesta = 2;
+                        break;
+                    case 2:
+                        direcOpuesta = 1;
+                        break;
+                    case 3:
+                        direcOpuesta = 4;
+                        break;
+                    case 4:
+                        direcOpuesta = 3;
+                        break;
+                    default:
+                        *compRachaPtr = 1;
+                        break;
+                    }
+
+                    marcarPosBlancos(matriz, vecPosBlancosPtr, filaAux, colAux, canPosBlancosPtr, *puntaje, filas, cols );
+
+                    apuntarEnRachaMayorA1(&fila, &col, &direc, *puntaje, canPosBlancosPtr, vecPosBlancosPtr, direcOpuesta, &ataqueValido);
+                }
+                else
+                {
+                    apuntarEnRachaMayorA1(&fila, &col, &direc, *puntaje, canPosBlancosPtr, vecPosBlancosPtr, (ultDirTomadaPtr[0]), &ataqueValido);
+                }
+
 
                 printf("\nCase 2 (%d ; %d; %d) \n", fila, col, direc);
 
                 if(ataqueValido != 1)
-                {
-                    *compRachaPtr = 1;
+                {   
+                    if((*compRachaPtr > 1) && (vueltaHecha == 0))
+                    {
+                        vueltaAlPrimerAciertoRacha = 1;
+                        vueltaHecha = 1;
+                    }
+                    else
+                    {
+                        *compRachaPtr = 0;
+                        vueltaAlPrimerAciertoRacha = 0;
+                    }
                 }
             }
             else
             {
                 if((*compRachaPtr < 0) && (*compRachaPtr > -5))
                 {
-                    if(*canPosBlancosPtr <= 0)
+
+                    if((*canPosBlancosPtr <= 0)) ////////////////////////////////////////////////////////////////7
                     {
+                        printf("\n\n|||| Puntaje: %d ,ultDirTomadaPtr[0]: %d, ultDirTomadaPtr[1]: %d \n\n", *puntaje, ultDirTomadaPtr[0], ultDirTomadaPtr[1]);
+
                         if((*puntaje > 1) && (*puntaje == ultDirTomadaPtr[1]))
                         {
                             *compRachaPtr = 2;
@@ -189,6 +240,8 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
 
                         if(ataqueValido == 0)
                         {
+                            printf("\n\n#### Puntaje: %d ,ultDirTomadaPtr[0]: %d, ultDirTomadaPtr[1]: %d \n\n", *puntaje, ultDirTomadaPtr[0], ultDirTomadaPtr[1]);
+
                             if((*puntaje > 1) && (*puntaje == ultDirTomadaPtr[1]))
                             {
                                 *compRachaPtr = 2;
@@ -220,7 +273,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
     {
         (*puntaje)+=1;
 
-        if(*compRachaPtr > 0)
+        if(*compRachaPtr > 0) ////
         {
             (*compRachaPtr)+=1; //////
             ultDirTomadaPtr[0] = direc;
@@ -228,11 +281,20 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
         }
         else
         {
-            *compRachaPtr = 1;
-            coordsPrimerAciertoRachaPtr[0] = fila;
-            coordsPrimerAciertoRachaPtr[1] = col;
-            coordsPrimerAciertoRachaPtr[2] = 0; //rondas desde que ocurrio
+            if(*compRachaPtr == 0)
+            {
+                coordsPrimerAciertoRachaPtr[0] = fila;
+                coordsPrimerAciertoRachaPtr[1] = col;
+                coordsPrimerAciertoRachaPtr[2] = 0; //rondas desde que ocurrio
 
+                *compRachaPtr = 1;
+            } 
+            else
+            {
+                *compRachaPtr = 2;
+                ultDirTomadaPtr[0] = direc;
+                ultDirTomadaPtr[1] = *puntaje;
+            }
         }
 
         coordsUltAciertoPtr[0] = fila;
@@ -271,9 +333,5 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
             coordsUltAciertoPtr[2] += 1;
             coordsPrimerAciertoRachaPtr[2] += 1;
         }
-          
-
-
     }
-    
 }

@@ -20,17 +20,7 @@ int main(void)
     //----------------------------------------------------
 
     //Poner barcos:
-    matriz[0][0][0] = 1;
-    matriz[0][1][0] = 1;
-    matriz[0][2][0] = 1;
-    matriz[0][3][0] = 1;
-    matriz[0][4][0] = 1;
-    matriz[0][5][0] = 1;
-    matriz[0][6][0] = 1;
-    matriz[0][7][0] = 1;
-    matriz[0][8][0] = 1;
-    matriz[0][9][0] = 1;
-
+    
     matriz[1][0][0] = 1;
     matriz[1][1][0] = 1;
     matriz[1][2][0] = 1;
@@ -41,17 +31,6 @@ int main(void)
     matriz[1][7][0] = 1;
     matriz[1][8][0] = 1;
     matriz[1][9][0] = 1;
-
-    matriz[2][0][0] = 1;
-    matriz[2][1][0] = 1;
-    matriz[2][2][0] = 1;
-    matriz[2][3][0] = 1;
-    matriz[2][4][0] = 1;
-    matriz[2][5][0] = 1;
-    matriz[2][6][0] = 1;
-    matriz[2][7][0] = 1;
-    matriz[2][8][0] = 1;
-    matriz[2][9][0] = 1;
 
     matriz[3][0][0] = 1;
     matriz[3][1][0] = 1;
@@ -64,6 +43,23 @@ int main(void)
     matriz[3][8][0] = 1;
     matriz[3][9][0] = 1;
     
+    matriz[5][1][0] = 1;
+    matriz[6][1][0] = 1;
+    matriz[7][1][0] = 1;
+    matriz[8][1][0] = 1;
+    matriz[9][1][0] = 1;
+
+    matriz[5][5][0] = 1;
+    matriz[6][5][0] = 1;
+    matriz[7][5][0] = 1;
+    matriz[8][5][0] = 1;
+    matriz[9][5][0] = 1;
+
+    matriz[5][8][0] = 1;
+    matriz[6][8][0] = 1;
+    matriz[7][8][0] = 1;
+    matriz[8][8][0] = 1;
+    matriz[9][8][0] = 1;
 
     // matriz[5][1][0] = 1;
     // matriz[6][1][0] = 1;
@@ -84,25 +80,25 @@ int main(void)
     //----------------------------------------------------
     //Marcar posiciones como atacadas:
 
-    matriz[9][2][1] = 1;
-    matriz[9][3][1] = 1;
-    matriz[9][4][1] = 1;
+    // matriz[9][2][1] = 1;
+    // matriz[9][3][1] = 1;
+    // matriz[9][4][1] = 1;
 
     //al rededor de (5; 5)
-    matriz[4][5][1] = 1;
-    matriz[5][4][1] = 1;
-    matriz[5][6][1] = 1;
-    matriz[6][5][1] = 1;
+    // matriz[4][5][1] = 1;
+    // matriz[5][4][1] = 1;
+    // matriz[5][6][1] = 1;
+    // matriz[6][5][1] = 1;
 
     //al rededor de (0; 9)
-    matriz[0][8][1] = 1;
-    matriz[1][9][1] = 1;
+    // matriz[0][8][1] = 1;
+    // matriz[1][9][1] = 1;
 
     //ariva de (9;5)
-    matriz[8][5][1] = 1;
+    // matriz[8][5][1] = 1;
 
     //derecha de (9;0)
-    matriz[9][1][1] = 1;
+    // matriz[9][1][1] = 1;
 
 
     //----------------------------------------------------
@@ -147,7 +143,7 @@ int main(void)
             //printf("vecPosBlancos: ")
             if(puntaje > 0)
             {
-                printf("ultDirTomada: %d hace %d rondas \n", memoria.ultDirTomada[0], memoria.ultDirTomada[1]);
+                printf("ultDirTomada: %d en %d puntos \n", memoria.ultDirTomada[0], memoria.ultDirTomada[1]);
                 printf("coordsUltAcierto: (%d, %d) en %d puntos \n",memoria.coordsUltAcierto[0], memoria.coordsUltAcierto[1], memoria.coordsUltAcierto[2]+1);
                 printf("coordsPrimerAciertoRacha: (%d, %d) hace %d rondas \n", memoria.coordsPrimerAciertoRacha[0], memoria.coordsPrimerAciertoRacha[1], memoria.coordsPrimerAciertoRacha[2]+1);
             }
