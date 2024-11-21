@@ -9,29 +9,27 @@ int main(void)
 
     int filas, cols, celdas;
 
-    //filas = 10;
-    //cols = 10;
-
     pedirDimMat(&filas, &cols);
     celdas = 2;
-
 
     int ***matrizJug = crearMat3D(filas, cols, celdas),
         ***matrizComp = crearMat3D(filas, cols, celdas)
     ;
 
-    int numBarcos, puntosVic;
+    int numBarcos, puntosVic, vecBarcos[70];
 
-    numBarcos = 5;
+    puntosVic = 0;
+    numBarcos = 0;
 
-    int vecBarcos[numBarcos];
+    definirBarcos(filas, cols, &numBarcos, vecBarcos, &puntosVic);
 
-    for(int i=0; i<numBarcos; i++)
-    {
-        vecBarcos[i] = numBarcos - i;
-        puntosVic+= numBarcos-i;
-    }
+    //int numBarcos = 5;
 
+    //for(int i=0; i<numBarcos; i++)
+    //{
+        //vecBarcos[i] = numBarcos - i;
+        //puntosVic+= numBarcos-i;
+    //}
 
     fasePosBarcos(filas, cols, numBarcos, vecBarcos, matrizJug, matrizComp);
 

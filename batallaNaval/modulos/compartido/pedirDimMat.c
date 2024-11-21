@@ -8,7 +8,7 @@ void pedirDimMat(int *filas, int *cols)
     float inputValido, dimensionAux;
     char auxChar[5];
 
-    limMax = 20;
+    limMax = 15;
     limMin = 5;
 
     valido = 0;
