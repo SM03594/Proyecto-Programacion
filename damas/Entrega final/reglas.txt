@@ -1,0 +1,30 @@
+1.Tablero: 
+    - El juego se juega en un tablero 8x8
+
+2.Objetivo del juego:
+    - El objetivo es capturar todas las piezas del oponente 
+
+3.Piezas:
+    -Las piezas rojas (R) ocupan las 3 filas inferiores, y las piezas negras (N) ocupan las 3 filas superiores.
+    -Las piezas se colocan alternadas diagonalmente.
+
+4.Movimiento de las piezas:
+    -Para seleccionar la pieza que desea mover tiene que ingresar primero el número de la fila y luego el numero de la columna 
+    -Para avanzar tienes que ingresar el numero de la fila y de la columna a donde deseas mover la pieza
+    -Las piezas se mueven en diagonal y pueden moverse una casilla por turno
+    -Las piezas solo se pueden mover hacia adelante exceptuando las damas
+
+5.Captura de fichas:
+    - Para capturar una ficha del oponente, debes saltar sobre ella. 
+    - Para saltarla tienes que ingresar el número de la fila y de la columna de la posición en la que la pieza va a terminar después de haber comido.
+    - El salto tiene que ser en diagonal y el lugar donde va a caer la ficha no debe haber ninguna pieza 
+
+6. Reinas(Damas):
+    - Cuando una pieza alcanza la última fila en el lado opuesto del tablero, se corona y se convierte en una reina
+    - La reina puede moverse hacia adelante y hacia atrás, en diagonal, pero solo 1 casilla 
+    - La reina puede capturar piezas de forma similar a las piezas normales pero en cualquier dirección 
+    - El movimiento de las reinas para ingresar por teclado es el mismo que el de las piezas normales 
+
+7.Fin del juego: 
+    - El juego termina cuando uno de los jugadores captura todas las piezas del oponente o cuando no existen movimientos posibles
+
