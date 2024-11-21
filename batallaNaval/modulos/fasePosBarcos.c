@@ -58,8 +58,8 @@ void fasePosBarcos(int filas, int cols, int numBarcos, int vecBarcos[5], int ***
         while (validezCoords==0)
         {
             coords[0] = numAleatorio(0, 1);
-            coords[1] = numAleatorio(0, 9);
-            coords[2] = numAleatorio(0, 9);
+            coords[1] = numAleatorio(0, filas-1);
+            coords[2] = numAleatorio(0, cols-1);
 
             enRango = posEnRango(coords, longBarcoActual, filas, cols, 1);
 
