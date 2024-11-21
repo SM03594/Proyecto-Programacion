@@ -173,7 +173,7 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
                 else
                 {
                     if(matrizJug[i][x][1]==1)
-                        printf(" &");
+                        printf("  ");
                     else
                         printf(" 0")
                     ;
@@ -213,7 +213,7 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
                 else
                 {
                     if(matrizComp[i][x][1]==1)
-                        printf(" &");
+                        printf("  ");
                     else
                         printf(" 0")
                     ;

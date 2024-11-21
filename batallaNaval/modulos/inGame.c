@@ -111,24 +111,47 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
             printf("Ronda: %d \n", rondasCont+1);
             printf("Puntaje Jugador: %d/%d \n", puntosJug, puntosVic);
             printf("Puntaje Computadora: %d/%d \n", puntosComp, puntosVic);
-            
-            atacarMatriz(matrizJug, filas, cols, &puntosJug, turno);
-            turno = 1;
+            printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 
+            atacarMatriz(matrizComp, filas, cols, &puntosJug, turno);
+            
             if(puntosJug == puntosVic)
             {
                 victoria = 1;
             }
+            
+            turno = 1;
         }
         else
         {
+            ataqueComp(matrizJug, filas, cols, &puntosComp, &memoria, 1);
             
-
+            if(puntosComp == puntosVic)
+            {
+                victoria = 1;
+            }
+            
+            turno = 0;
         }
 
+        printMesa(matrizJug, matrizComp, filas, cols);
+        rondasCont+=1;
     }
     
+    printf("\n\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+    printf("Ronda: %d \n", rondasCont+1);
+    printf("Puntaje Jugador: %d/%d \n", puntosJug, puntosVic);
+    printf("Puntaje Computadora: %d/%d \n", puntosComp, puntosVic);
+    printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 
+    if(puntosJug == puntosVic)
+    {
+        printf("\nEl jugador ha gandado!!!!\n");
+    }
+    else
+    {
+        printf("\nLa computadora ha ganado!!!!\n");
+    }
 
 }
 
