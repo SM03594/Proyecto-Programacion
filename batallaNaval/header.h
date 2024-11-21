@@ -12,6 +12,13 @@ void definirBarcos(int filas, int cols, int *numBarcos, int *vecBarcos, int *pun
 #include "modulos/compartido/pedirDimMat.c"
 #include "modulos/compartido/definirBarcos.c"
 
+//de archivos:
+void guardarPuntuacion(char *nombre, int movimientos);
+void mostrarPuntuaciones();
+
+#include "modulos/compartido/guardarPuntuacion.c"
+#include "modulos/compartido/mostrarPuntuaciones.c"
+
 //----------------------------------------------------------------------------------
 
 //Funciones Fase de Posicionamiento:
@@ -59,6 +66,19 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
 #include "modulos/deInGame/ataqueComp.c"
 #include "modulos/deInGame/printMesa.c"
 #include "modulos/inGame.c"
+
+
+//batallaNavalFunc:
+void batallaNavalFunc(void);
+
+#include "batallaNavalFunc.c"
+
+
+//menu:
+void menuPrincipal(void);
+
+#include "menuPrincipal.c"
+
 
 
 #endif
