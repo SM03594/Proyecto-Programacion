@@ -248,10 +248,6 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
         ;
     }
 
-    if((filas > 7) && (filas < 10))
-        printf(" ")
-    ;
-
     for(x=0; x<espEntreFilasDeNums; x++)
         printf(" ")
     ;
@@ -279,10 +275,6 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
                     
         printf(" %d", x);
     }
-
-    if((filas > 7) && (filas < 10))
-        printf(" ")
-    ;
 
     for(x=0; x<espEntreFilasDeNums; x++)
         printf(" ")
