@@ -18,9 +18,12 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
     memoria.cantPosBlancos = 0;
     memoria.vecPosBlancos = crearMat3D(100, 4, 3); ////////////
     
+    system("cls"); ///////////////
 
     while (victoria==0)
     {
+        system("cls"); ///////////////
+
         if(rondasCont == 0)
         {
             printMesa(matrizJug, matrizComp, filas, cols);
@@ -72,7 +75,7 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
     {
         printf("\nEl jugador ha gandado!!!!\n\n");
 
-        char *nombre;
+        char nombre[10];
 
         printf("Ingrese su nombre para el ranking: "); ///////////////////
         scanf("%s", nombre);
@@ -85,4 +88,3 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
     }
 
 }
-

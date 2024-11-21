@@ -10,7 +10,8 @@ int main(void)
 
     filas = 10;
     cols = 10;
-    puntosVic = 15;
+    puntosVic = 1; ////
+    //puntosVic = 15;
 
     int ***matrizJug = crearMat3D(filas, cols, 2),
         ***matrizComp = crearMat3D(filas, cols, 2)

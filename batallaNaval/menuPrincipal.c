@@ -16,9 +16,11 @@ int main(void) {
 
         switch (opcion){
         case 1:
+            system("cls"); ///////////////
             batallaNavalFunc();
             break;
         case 2:
+            system("cls"); ///////////////
             mostrarPuntuaciones();
             break;
         case 3:
