@@ -22,14 +22,6 @@ void batallaNavalFunc (void)
 
     definirBarcos(filas, cols, &numBarcos, vecBarcos, &puntosVic);
 
-    //int numBarcos = 5;
-
-    //for(int i=0; i<numBarcos; i++)
-    //{
-        //vecBarcos[i] = numBarcos - i;
-        //puntosVic+= numBarcos-i;
-    //}
-
     fasePosBarcos(filas, cols, numBarcos, vecBarcos, matrizJug, matrizComp);
 
     inGame(matrizJug, matrizComp, puntosVic, filas, cols);

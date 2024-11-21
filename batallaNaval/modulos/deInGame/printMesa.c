@@ -8,12 +8,6 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
     int i, x, j;
     int longMesa, espIntermedio, espTituloJuego, espCartelJugadores, espParaNumeracion, espEntreCartelesJugs, espEntreFilasDeNums, ejeMayor;
 
-    // if(filas >= cols)
-    //     ejeMayor = filas;
-    // else
-    //     ejeMayor = cols
-    // ;
-
     if(filas > 10)
     {
         espIntermedio = 10;
@@ -39,9 +33,7 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
 
     espEntreCartelesJugs = espCartelJugadores*2 + espIntermedio;
     
-
-    //Limpiar Pantalla
-
+    
     printf("\n");
 
     //---------titulo juego-------------------------------

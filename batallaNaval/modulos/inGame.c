@@ -22,8 +22,6 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
 
     while (victoria==0)
     {
-        system("cls"); ///////////////
-
         if(rondasCont == 0)
         {
             printMesa(matrizJug, matrizComp, filas, cols);
@@ -58,10 +56,12 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
             turno = 0;
         }
 
-        printMesa(matrizJug, matrizComp, filas, cols);
+        //printMesa(matrizJug, matrizComp, filas, cols);
         if(turno == 1)
         {
             rondasCont+=1;
+            system("cls"); //////////
+            printMesa(matrizJug, matrizComp, filas, cols);
         }
     }
     
@@ -75,11 +75,22 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
     {
         printf("\nEl jugador ha gandado!!!!\n\n");
 
-        char nombre[10];
+        int inputValido;
+        char nombre[11];
 
-        printf("Ingrese su nombre para el ranking: "); ///////////////////
-        scanf("%s", nombre);
+        inputValido = 0;
 
+        while (inputValido != 1)
+        {
+            printf("Ingrese su nombre para el ranking (7 caracteres max): "); ///////////////////
+            inputValido = scanf("%s", nombre);
+
+            if(inputValido != 1)
+            {
+                fflush(stdin);
+            }
+        }
+        
         guardarPuntuacion(nombre, rondasCont); ////////////////
     }
     else

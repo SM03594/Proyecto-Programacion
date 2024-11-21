@@ -22,13 +22,13 @@ void apuntarEnRachaMayorA1(int *fila, int *col, int *direc, int puntaje, int *ca
     int indPuntaje = puntaje-1;
     int direcAux;
 
-    printf("\n\n-----apuntarEnRachaMayorA1-----\n\n");
+    //printf("\n\n-----apuntarEnRachaMayorA1-----\n\n");
 
     for(int i=0; i<*cantPosBlancos; i++) //
     {
         direcAux = vecPosBlancos[indPuntaje][i][2];
 
-        printf(" i: %d, direcAux: %d, ultDirTomada: %d, indPuntaje: %d, vecPosBlancos: %d, cantPosBlancos: %d \n\n", i, direcAux, ultDirTomada, indPuntaje, vecPosBlancos[indPuntaje][i][2], *cantPosBlancos);
+        //printf(" i: %d, direcAux: %d, ultDirTomada: %d, indPuntaje: %d, vecPosBlancos: %d, cantPosBlancos: %d \n\n", i, direcAux, ultDirTomada, indPuntaje, vecPosBlancos[indPuntaje][i][2], *cantPosBlancos);
 
         if(direcAux == ultDirTomada)
         {
@@ -38,10 +38,8 @@ void apuntarEnRachaMayorA1(int *fila, int *col, int *direc, int puntaje, int *ca
             *ataqueValido = 1;
             i = *cantPosBlancos;
 
-            printf("i %d: fila: %d, col: %d, direc: %d, ataqueValido: %d,  \n", i, *fila, *col, *direc, *ataqueValido);
-
-            printf("ººººººººººººººººººººººººººº\n");
-
+            //printf("i %d: fila: %d, col: %d, direc: %d, ataqueValido: %d,  \n", i, *fila, *col, *direc, *ataqueValido);
+            //printf("ººººººººººººººººººººººººººº\n");
         }
     }
 }
@@ -52,12 +50,12 @@ void apuntarEnRachaNegativa(int *fila, int *col, int *ataqueValido, int *direc, 
 
     indPuntaje = puntaje-1;
 
-    printf("\n\n-----apuntarEnRachaNegativa-----\n\n");
+    //printf("\n\n-----apuntarEnRachaNegativa-----\n\n");
 
     filaAux = coordsUltAcierto[0];
     colAux = coordsUltAcierto[1];
 
-    printf("CoordsUltAcierto: (%d; %d) \n\n", filaAux, colAux);
+    //printf("CoordsUltAcierto: (%d; %d) \n\n", filaAux, colAux);
 
     marcarPosBlancos(matriz, vecPosBlancos, filaAux, colAux, cantPosBlancos, puntaje, filas, cols);
 
@@ -68,13 +66,13 @@ void apuntarEnRachaNegativa(int *fila, int *col, int *ataqueValido, int *direc, 
         filaAux = vecPosBlancos[indPuntaje][i][0];
         colAux = vecPosBlancos[indPuntaje][i][1];
 
-        printf("CoordsPosibleBlanco: (%d; %d) --->", filaAux, colAux);
+        //printf("CoordsPosibleBlanco: (%d; %d) --->", filaAux, colAux);
 
         celdaPrevAtacada = matriz[filaAux][colAux][1];
 
         if(celdaPrevAtacada == 0)
             cont+=1;
-            printf("No fue atacado! \n");
+            //printf("No fue atacado! \n");
         ;
     }
 
@@ -85,7 +83,7 @@ void apuntarEnRachaNegativa(int *fila, int *col, int *ataqueValido, int *direc, 
         *col = vecPosBlancos[indPuntaje][random][1];
         *direc = vecPosBlancos[indPuntaje][random][2];
 
-        printf("random: %d, *(%d; %d; %d) ",random, *fila, *col, *direc);
+        //printf("random: %d, *(%d; %d; %d) ",random, *fila, *col, *direc);
 
         *ataqueValido = 1;
     }
@@ -108,7 +106,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
         *ultDirTomadaPtr = memoria->ultDirTomada
     ;
 
-    printf("\n\n compRachaPtr: %d \n\n", *compRachaPtr);
+    //printf("\n\n compRachaPtr: %d \n\n", *compRachaPtr);
 
     ataqueValido = 0;
     vueltaHecha = 0;
@@ -123,7 +121,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
             {
                 apuntarEnRacha0(&fila, &col, filas, cols);
                 celdaPrevAtacada = matriz[fila][col][1];
-                printf("\nCase 0 (%d ; %d) \n", fila, col);
+                //printf("\nCase 0 (%d ; %d) \n", fila, col);
             }
             ataqueValido = 1;
             break;
@@ -145,7 +143,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
                 {
                     apuntarEnRacha1(&fila, &col, &direc, *puntaje, *canPosBlancosPtr, vecPosBlancosPtr);
                     celdaPrevAtacada = matriz[fila][col][1];
-                    printf("\nCase 1 (%d ; %d; %d) \n", fila, col, direc);
+                    //printf("\nCase 1 (%d ; %d; %d) \n", fila, col, direc);
                 }   
                 ataqueValido = 1;
             }
@@ -157,7 +155,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
 
         default:
 
-            printf("\n\n -------- Default -------- \n\n");
+            //printf("\n\n -------- Default -------- \n\n");
 
             if(*compRachaPtr > 1)
             {
@@ -196,7 +194,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
                 }
 
 
-                printf("\nCase 2 (%d ; %d; %d) \n", fila, col, direc);
+                //printf("\nCase 2 (%d ; %d; %d) \n", fila, col, direc);
 
                 if(ataqueValido != 1)
                 {   
@@ -219,7 +217,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
 
                     if((*canPosBlancosPtr <= 0)) ////////////////////////////////////////////////////////////////7
                     {
-                        printf("\n\n|||| Puntaje: %d ,ultDirTomadaPtr[0]: %d, ultDirTomadaPtr[1]: %d \n\n", *puntaje, ultDirTomadaPtr[0], ultDirTomadaPtr[1]);
+                        //printf("\n\n|||| Puntaje: %d ,ultDirTomadaPtr[0]: %d, ultDirTomadaPtr[1]: %d \n\n", *puntaje, ultDirTomadaPtr[0], ultDirTomadaPtr[1]);
 
                         if((*puntaje > 1) && (*puntaje == ultDirTomadaPtr[1]))
                         {
@@ -240,7 +238,7 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
 
                         if(ataqueValido == 0)
                         {
-                            printf("\n\n#### Puntaje: %d ,ultDirTomadaPtr[0]: %d, ultDirTomadaPtr[1]: %d \n\n", *puntaje, ultDirTomadaPtr[0], ultDirTomadaPtr[1]);
+                            //printf("\n\n#### Puntaje: %d ,ultDirTomadaPtr[0]: %d, ultDirTomadaPtr[1]: %d \n\n", *puntaje, ultDirTomadaPtr[0], ultDirTomadaPtr[1]);
 
                             if((*puntaje > 1) && (*puntaje == ultDirTomadaPtr[1]))
                             {
@@ -305,8 +303,8 @@ void ataqueComp(int ***matriz, int filas, int cols, int *puntaje, struct memoria
 
         for(int i=0; i<(*canPosBlancosPtr); i++)
         {
-            printf("\nPosible Blanco N%d: ", i+1);
-            printf(" (%d , %d) dir relativa: %d\n", vecPosBlancosPtr[(*puntaje)-1][i][0], vecPosBlancosPtr[(*puntaje)-1][i][1], vecPosBlancosPtr[(*puntaje)-1][i][2]);
+            //printf("\nPosible Blanco N%d: ", i+1);
+            //printf(" (%d , %d) dir relativa: %d\n", vecPosBlancosPtr[(*puntaje)-1][i][0], vecPosBlancosPtr[(*puntaje)-1][i][1], vecPosBlancosPtr[(*puntaje)-1][i][2]);
         }
 
     }

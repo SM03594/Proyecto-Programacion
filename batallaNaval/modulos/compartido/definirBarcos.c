@@ -13,8 +13,6 @@ void definirBarcos(int filas, int cols, int *numBarcos, int *vecBarcos, int *pun
 
     while (*puntosVic != totalCeldas)
     {
-        printf("\n\n || contVuelta: %d, totalCeldas: %d, *puntosVic: %d|| \n\n", contVuelta, totalCeldas, *puntosVic);
-
         if(contVuelta <= (totalCeldas - *puntosVic))
         {
             vecBarcos[*numBarcos] = contVuelta;
@@ -27,8 +25,6 @@ void definirBarcos(int filas, int cols, int *numBarcos, int *vecBarcos, int *pun
         else
             contVuelta = 5;
         ;
-
-        printf("\n\n ## contVuelta: %d, totalCeldas: %d, *puntosVic: %d, vecBarcos[*numBarcos]: %d ## \n\n", contVuelta, totalCeldas, *puntosVic, vecBarcos[*numBarcos-1]);
     }
 }
 
