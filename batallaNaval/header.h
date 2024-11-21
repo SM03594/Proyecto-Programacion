@@ -75,9 +75,9 @@ void batallaNavalFunc(void);
 
 
 //menu:
-void menuPrincipal(void);
+//void menuPrincipal();
 
-#include "menuPrincipal.c"
+//#include "menuPrincipal.c"
 
 
 

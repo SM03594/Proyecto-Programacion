@@ -3,13 +3,14 @@
 #include "header.h"
 
 
-void menuPrincipal(void) {
+int main(void) {
     int opcion;
     do {
-            printf("\n--- Menu Principal ---\n");
-            printf("Iniciar Juego\n");
-            printf("Ver la tabla\n");
-            printf("Salir\n");
+            printf("\n------ Menu Principal ------\n");
+            printf("| 1-Iniciar Juego           |\n");
+            printf("| 2-Ver el Ranking          |\n");
+            printf("| 3-Salir                   |\n");
+            printf("-----------------------------\n");
             printf("Seleccione una opcion:");
             scanf("%d",&opcion);
 
@@ -28,4 +29,6 @@ void menuPrincipal(void) {
             break;
         }
     } while(opcion != 3);
+
+    return 0;
 }
