@@ -4,9 +4,11 @@
 //Funciones Compartidas: 
 int numAleatorio(int min, int max);
 int*** crearMat3D(int filas, int cols, int celdas);
+void pedirDimMat(int *filas, int *cols);
 
 #include "modulos/compartido/numAleatorio.c"
 #include "modulos/compartido/crearMat3D.c"
+#include "modulos/compartido/pedirDimMat.c"
 
 //----------------------------------------------------------------------------------
 
