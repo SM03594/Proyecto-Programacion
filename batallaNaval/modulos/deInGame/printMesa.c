@@ -199,8 +199,8 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
                     if(matrizComp[i][x][1]==1)
                         printf(" X");
                     else
-                        printf(" #")
-                        //printf(" ?");
+                        //printf(" #")
+                        printf(" ?");
                     ;
                 }
                 else
@@ -208,8 +208,8 @@ void printMesa(int ***matrizJug, int ***matrizComp, int filas, int cols)
                     if(matrizComp[i][x][1]==1)
                         printf("  ");
                     else
-                        printf(" 0");
-                        //printf(" ?")
+                        //printf(" 0");
+                        printf(" ?")
                     ;
                 }
 
