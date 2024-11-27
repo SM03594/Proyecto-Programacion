@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "../header.h"
 
@@ -56,13 +57,12 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
             turno = 0;
         }
 
-        //printMesa(matrizJug, matrizComp, filas, cols);
-        if(turno == 1)
-        {
-            rondasCont+=1;
-            system("cls"); //////////
-            printMesa(matrizJug, matrizComp, filas, cols);
-        }
+        if(turno == 0)
+            rondasCont+=1
+        ;
+    
+        system("cls"); //////////
+        printMesa(matrizJug, matrizComp, filas, cols);
     }
     
     printf("\n\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
@@ -75,23 +75,33 @@ void inGame(int ***matrizJug, int ***matrizComp, int puntosVic, int filas, int c
     {
         printf("\nEl jugador ha gandado!!!!\n\n");
 
-        int inputValido;
-        char nombre[11];
+        int inputValido, longitud;
+        char nombre[100];
 
         inputValido = 0;
+        
+        while (inputValido != 1) {
+            printf("Ingrese su nombre para el ranking (7 caracteres max): ");
 
-        while (inputValido != 1)
-        {
-            printf("Ingrese su nombre para el ranking (7 caracteres max): "); ///////////////////
-            inputValido = scanf("%s", nombre);
+            if (fgets(nombre, sizeof(nombre), stdin)) {
+                // Eliminar el salto de línea (\n) al final de la entrada
+                nombre[strcspn(nombre, "\n")] = '\0';
 
-            if(inputValido != 1)
-            {
-                fflush(stdin);
+                longitud = strlen(nombre);
+
+                if (longitud >= 1 && longitud <= 7) {
+                    inputValido = 1;  
+                    printf("Nombre ingresado: %s\n", nombre);
+                } else {
+                    printf("\nERROR: El nombre debe tener entre 1 y 7 caracteres.\n");
+                }
+            } else {
+                printf("ERROR: Entrada no válida. Intente de nuevo.\n");
+                while (getchar() != '\n');  // Esto consume los caracteres restantes en el buffer
             }
         }
-        
-        guardarPuntuacion(nombre, rondasCont); ////////////////
+
+        guardarPuntuacion(nombre, (rondasCont+1)); ////////////////
     }
     else
     {
