@@ -1,0 +1,1 @@
+Correr el juego desde el archivo menuPrincipal.c
